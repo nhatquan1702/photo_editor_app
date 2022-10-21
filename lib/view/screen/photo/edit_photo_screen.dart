@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_editor_app/view/home/widget/chip_widget.dart';
+import 'package:photo_editor_app/view/screen/home/widget/chip_widget.dart';
 
 class EditPhotoView extends StatefulWidget {
   const EditPhotoView({Key? key}) : super(key: key);

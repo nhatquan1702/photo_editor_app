@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:photo_editor_app/view/home/home_screen.dart';
+import 'package:photo_editor_app/view/screen/home/home_screen.dart';
 
-import 'constant/app_color.dart';
+import 'constant/theme/app_color.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,15 +21,15 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(bodySmall: TextStyle(color: AppColors.white)),
         fontFamily: GoogleFonts.montserrat().fontFamily,
         useMaterial3: true,
-        appBarTheme: AppBarTheme(backgroundColor: AppColors.lightBlue),
+        appBarTheme: AppBarTheme(backgroundColor: AppColors.primarySwatch.shade100),
         navigationBarTheme:
-            NavigationBarThemeData(indicatorColor: AppColors.darkBlue),
+            NavigationBarThemeData(indicatorColor: AppColors.primaryColor),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: AppColors.darkBlue,
+          backgroundColor: AppColors.primarySwatch.shade700,
         ),
-        chipTheme: ChipThemeData(backgroundColor: AppColors.cyan),
+        chipTheme: ChipThemeData(backgroundColor: AppColors.primarySwatch.shade50),
         backgroundColor: AppColors.white,
-        scaffoldBackgroundColor: AppColors.lightBlue,
+        scaffoldBackgroundColor: AppColors.primarySwatch.shade100,
       ),
       home: const HomeView(),
     );

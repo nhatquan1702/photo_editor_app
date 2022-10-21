@@ -1,10 +1,10 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_editor_app/constant/widget/bottom_navigationbar.dart';
-import 'package:photo_editor_app/view/home/widget/chip_widget.dart';
-import 'package:photo_editor_app/view/home/widget/gridchild_widget.dart';
-import 'package:photo_editor_app/view/photo/edit_photo_screen.dart';
+import 'package:photo_editor_app/view/component/widget/bottom_navigationbar.dart';
+import 'package:photo_editor_app/view/screen/home/widget/chip_widget.dart';
+import 'package:photo_editor_app/view/screen/home/widget/gridchild_widget.dart';
+import 'package:photo_editor_app/view/screen/photo/edit_photo_screen.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -225,7 +225,7 @@ class _HomeViewState extends State<HomeView> {
                     const Spacer(),
                     ChipWidget(
                         label: Text(
-                      'Xem tất ',
+                      'Xem tất cả',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
