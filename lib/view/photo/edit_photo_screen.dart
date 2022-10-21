@@ -26,7 +26,7 @@ class _EditPhotoViewState extends State<EditPhotoView> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
         title: Text(
-          'Adjust',
+          'Chỉnh sửa',
           style: Theme.of(context)
               .textTheme
               .titleLarge!
@@ -91,7 +91,7 @@ class _EditPhotoViewState extends State<EditPhotoView> {
                                   child: Row(
                                     children: [
                                       const Text(
-                                        'Contrast',
+                                        'Tương phản',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600),
                                       ),

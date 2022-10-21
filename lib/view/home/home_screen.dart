@@ -32,14 +32,14 @@ class _HomeViewState extends State<HomeView> {
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage('assets/p_3.jpeg'),
+                  image: AssetImage('assets/quan.jpg'),
                 ),
               ),
             ),
           )
         ],
         title: Text(
-          'Hello William',
+          'Quang Phạm',
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -58,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
             openContainer();
           },
           icon: const Icon(Icons.camera_alt),
-          label: const Text('Take a photo'),
+          label: const Text('Chụp ảnh'),
         ),
       ),
       // bottomNavigationBar: NavigationBar(
@@ -94,25 +94,25 @@ class _HomeViewState extends State<HomeView> {
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.globe),
-            title: const Text('Popular'),
+            title: const Text('Phổ biến'),
             activeColor: Colors.red,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.search),
-            title: const Text('Search'),
+            title: const Text('Tìm kiếm'),
             activeColor: Colors.purpleAccent,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.settings),
-            title: const Text('Setting'),
+            title: const Text('Cài đặt'),
             activeColor: Colors.green,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.person),
-            title: const Text('Account'),
+            title: const Text('Tài khoản'),
             activeColor: Colors.blue,
             textAlign: TextAlign.center,
           ),
@@ -155,7 +155,7 @@ class _HomeViewState extends State<HomeView> {
                 child: Row(
                   children: [
                     Text(
-                      'My Albums',
+                      'Album của tôi',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
@@ -163,7 +163,7 @@ class _HomeViewState extends State<HomeView> {
                     const Spacer(),
                     ChipWidget(
                       label: Text(
-                        'See All',
+                        'Xem tất cả',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w600,
                             ),
@@ -187,22 +187,22 @@ class _HomeViewState extends State<HomeView> {
                   children: const [
                     GridChild(
                       count: 132,
-                      description: 'Vacation',
+                      description: 'Gần đây',
                       imagePath: 'assets/a_1.jpeg',
                     ),
                     GridChild(
                       count: 42,
-                      description: 'Building',
+                      description: 'Ưa thích',
                       imagePath: 'assets/a_2.jpeg',
                     ),
                     GridChild(
                       count: 72,
-                      description: 'Vacation',
+                      description: 'Được chia sẻ',
                       imagePath: 'assets/a_3.jpeg',
                     ),
                     GridChild(
                       count: 21,
-                      description: 'Geometric',
+                      description: 'Khác',
                       imagePath: 'assets/a_4.jpeg',
                     ),
                   ],
@@ -216,7 +216,7 @@ class _HomeViewState extends State<HomeView> {
                 child: Row(
                   children: [
                     Text(
-                      'People',
+                      'Mọi người',
                       style: Theme.of(context)
                           .textTheme
                           .titleLarge!
@@ -225,7 +225,7 @@ class _HomeViewState extends State<HomeView> {
                     const Spacer(),
                     ChipWidget(
                         label: Text(
-                      'See All',
+                      'Xem tất ',
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
