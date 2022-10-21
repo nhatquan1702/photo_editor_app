@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_editor_app/constant/theme/app_color.dart';
 import 'package:photo_editor_app/view/component/widget/bottom_navigationbar.dart';
 import 'package:photo_editor_app/view/screen/home/widget/chip_widget.dart';
 import 'package:photo_editor_app/view/screen/home/widget/gridchild_widget.dart';
@@ -95,25 +96,25 @@ class _HomeViewState extends State<HomeView> {
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.globe),
             title: const Text('Phổ biến'),
-            activeColor: Colors.red,
+            activeColor: AppColors.primaryColor,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.search),
             title: const Text('Tìm kiếm'),
-            activeColor: Colors.purpleAccent,
+            activeColor: AppColors.primaryColor,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.settings),
             title: const Text('Cài đặt'),
-            activeColor: Colors.green,
+            activeColor: AppColors.primaryColor,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: const Icon(CupertinoIcons.person),
             title: const Text('Tài khoản'),
-            activeColor: Colors.blue,
+            activeColor: AppColors.primaryColor,
             textAlign: TextAlign.center,
           ),
         ],
@@ -263,9 +264,9 @@ class _HomeViewState extends State<HomeView> {
               )
             ],
           )),
-      Container(color: Colors.purpleAccent),
-      Container(color: Colors.green),
-      Container(color: Colors.blue),
+      Container(),
+      Container(),
+      Container(),
     ];
   }
 }

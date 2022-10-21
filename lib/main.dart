@@ -21,15 +21,15 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(bodySmall: TextStyle(color: AppColors.white)),
         fontFamily: GoogleFonts.montserrat().fontFamily,
         useMaterial3: true,
-        appBarTheme: AppBarTheme(backgroundColor: AppColors.primarySwatch.shade100),
+        appBarTheme: AppBarTheme(backgroundColor: AppColors.primarySwatch.shade50),
         navigationBarTheme:
             NavigationBarThemeData(indicatorColor: AppColors.primaryColor),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: AppColors.primarySwatch.shade700,
+          backgroundColor: AppColors.primaryColor,
         ),
-        chipTheme: ChipThemeData(backgroundColor: AppColors.primarySwatch.shade50),
+        chipTheme: ChipThemeData(backgroundColor: AppColors.secondaryColor),
         backgroundColor: AppColors.white,
-        scaffoldBackgroundColor: AppColors.primarySwatch.shade100,
+        scaffoldBackgroundColor: AppColors.primarySwatch.shade50,
       ),
       home: const HomeView(),
     );
