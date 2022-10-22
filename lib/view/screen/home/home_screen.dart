@@ -7,14 +7,14 @@ import 'package:photo_editor_app/view/screen/home/widget/chip_widget.dart';
 import 'package:photo_editor_app/view/screen/home/widget/gridchild_widget.dart';
 import 'package:photo_editor_app/view/screen/photo/edit_photo_screen.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
@@ -52,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
         transitionType: ContainerTransitionType.fadeThrough,
         closedColor: Colors.transparent,
         closedElevation: 5,
-        openBuilder: (context, _) => const EditPhotoView(),
+        openBuilder: (context, _) => const EditPhotoScreen(),
         closedBuilder: (context, openContainer) =>
             FloatingActionButton.extended(
           onPressed: () {

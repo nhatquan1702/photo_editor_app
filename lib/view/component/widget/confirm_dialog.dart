@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 Future<T?> showConfirmationDialog<T>(
-    BuildContext context, {
-      required String title,
-      String? desc,
-      String leftText = "Cancel",
-      String rightText = "Discard",
-    }) {
+  BuildContext context, {
+  required String title,
+  String? desc,
+  String leftText = "Cancel",
+  String rightText = "Discard",
+}) {
   return showDialog(
     context: context,
     builder: (context) {

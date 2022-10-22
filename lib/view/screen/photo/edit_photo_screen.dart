@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_editor_app/view/screen/home/widget/chip_widget.dart';
 
-class EditPhotoView extends StatefulWidget {
-  const EditPhotoView({Key? key}) : super(key: key);
+class EditPhotoScreen extends StatefulWidget {
+  const EditPhotoScreen({Key? key}) : super(key: key);
 
   @override
-  State<EditPhotoView> createState() => _EditPhotoViewState();
+  State<EditPhotoScreen> createState() => _EditPhotoScreenState();
 }
 
-class _EditPhotoViewState extends State<EditPhotoView> {
+class _EditPhotoScreenState extends State<EditPhotoScreen> {
   double _sliderValue = 0.34;
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,13 @@ class _EditPhotoViewState extends State<EditPhotoView> {
         selectedIndex: 1,
         destinations: const [
           NavigationDestination(icon: Icon(CupertinoIcons.info), label: ''),
-          NavigationDestination(icon: Icon(Icons.image), label: ''),
+          NavigationDestination(icon: Icon(CupertinoIcons.photo), label: ''),
           NavigationDestination(icon: Icon(CupertinoIcons.crop), label: ''),
         ],
       ),
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
+        centerTitle: true,
         title: Text(
           'Chỉnh sửa',
           style: Theme.of(context)

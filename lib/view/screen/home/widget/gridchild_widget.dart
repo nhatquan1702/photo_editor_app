@@ -34,7 +34,7 @@ class GridChild extends StatelessWidget {
           children: [
             Text(
               description,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
               overflow: TextOverflow.clip,
