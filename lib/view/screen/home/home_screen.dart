@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_editor_app/constant/strings.dart';
 import 'package:photo_editor_app/constant/theme/app_color.dart';
 import 'package:photo_editor_app/view/component/widget/bottom_navigationbar.dart';
 import 'package:photo_editor_app/view/screen/home/widget/chip_widget.dart';
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: kToolbarHeight + 16,
@@ -41,16 +43,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         title: Text(
           'Quang Phạm',
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+          style: theme.textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.w600,
               ),
         ),
       ),
       floatingActionButton: OpenContainer(
         transitionDuration: const Duration(milliseconds: 400),
-        middleColor: Theme.of(context).scaffoldBackgroundColor,
+        middleColor: theme.scaffoldBackgroundColor,
         transitionType: ContainerTransitionType.fadeThrough,
-        closedColor: Colors.transparent,
+        closedColor: AppColors.transparent,
         closedElevation: 5,
         openBuilder: (context, _) => const EditPhotoScreen(),
         closedBuilder: (context, openContainer) =>
@@ -62,24 +64,6 @@ class _HomeScreenState extends State<HomeScreen> {
           label: const Text('Chụp ảnh'),
         ),
       ),
-      // bottomNavigationBar: NavigationBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.transparent,
-      //   onDestinationSelected: (int index) {
-      //     _pageController.animateToPage(
-      //       index,
-      //       duration: const Duration(milliseconds: 200),
-      //       curve: Curves.easeInOut,
-      //     );
-      //   },
-      //   selectedIndex: _currentIndex,
-      //   destinations: const [
-      //     NavigationDestination(icon: Icon(CupertinoIcons.globe), label: ''),
-      //     NavigationDestination(icon: Icon(CupertinoIcons.search), label: ''),
-      //     NavigationDestination(
-      //         icon: Icon(CupertinoIcons.settings_solid), label: '')
-      //   ],
-      // ),
       bottomNavigationBar: BottomNavigationBarCustom(
         selectedIndex: _currentIndex,
         showElevation: true,
@@ -163,7 +147,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const Spacer(),
                     ChipWidget(
-                      label: Text(
+                      onTap: () {},
+                      horizontalPadding: 0,
+                      widget: Text(
                         'Xem tất cả',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w600,
@@ -225,12 +211,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const Spacer(),
                     ChipWidget(
-                        label: Text(
-                      'Xem tất cả',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                    ))
+                      onTap: (){
+                        Navigator.pushNamed(
+                          context,
+                          AppRouteName.album,
+                        );
+                      },
+                      horizontalPadding: 0,
+                      widget: Text(
+                        'Xem tất cả',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+                    )
                   ],
                 ),
               ),

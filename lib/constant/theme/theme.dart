@@ -10,6 +10,7 @@ class AppTheme {
     brightness: Brightness.light,
     primaryColor: AppColors.primaryColor,
     backgroundColor: AppColors.backgroundWhite,
+    canvasColor: AppColors.backgroundBlack,
     scaffoldBackgroundColor: AppColors.primarySwatch.shade50,
     primarySwatch: AppColors.primarySwatch,
     fontFamily: GoogleFonts.montserrat().fontFamily,
@@ -43,6 +44,7 @@ class AppTheme {
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
     backgroundColor: AppColors.backgroundBlack,
+    canvasColor: AppColors.backgroundWhite,
     scaffoldBackgroundColor: AppColors.primarySwatch.shade900,
     primaryColor: AppColors.primaryColor,
     primarySwatch: AppColors.primarySwatch,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:photo_editor_app/constant/strings.dart';
+import 'package:photo_editor_app/view/screen/album/album_screen.dart';
 import 'package:photo_editor_app/view/screen/home/home_screen.dart';
-import 'package:photo_editor_app/view/screen/photo/detail_photo_screen.dart';
+import 'package:photo_editor_app/view/screen/photo/detail/detail_photo_screen.dart';
 import 'package:photo_editor_app/view/screen/photo/edit_photo_screen.dart';
 import 'package:photo_editor_app/view/screen/search/search_screen.dart';
 import 'package:photo_editor_app/view/screen/welcome/welcome_screen.dart';
@@ -78,7 +79,25 @@ class AppRoute {
             );
           },
         );
+
+      case AppRouteName.album:
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (_, __, ___) => const AlbumScreen(),
+          transitionDuration: const Duration(milliseconds: 300),
+          transitionsBuilder: (_, animation, __, child) {
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(1, 0),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            );
+          },
+        );
     }
+
+
 
     return null;
   }

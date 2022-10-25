@@ -13,9 +13,10 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
   double _sliderValue = 0.34;
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index){},
+        onDestinationSelected: (int index) {},
         selectedIndex: 1,
         destinations: const [
           NavigationDestination(icon: Icon(CupertinoIcons.info), label: ''),
@@ -24,14 +25,12 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
         ],
       ),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: theme.backgroundColor,
         centerTitle: true,
         title: Text(
           'Chỉnh sửa',
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(fontWeight: FontWeight.w600),
+          style:
+              theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w600),
         ),
         leading: IconButton(
           onPressed: () {
@@ -54,7 +53,7 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
       body: Container(
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(),
-          color: Theme.of(context).backgroundColor,
+          color: theme.backgroundColor,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,8 +83,9 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    color: Theme.of(context).backgroundColor),
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: theme.backgroundColor,
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 8.0, vertical: 4),
@@ -102,8 +102,7 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
                                       Container(
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: Theme.of(context)
-                                              .floatingActionButtonTheme
+                                          color: theme.floatingActionButtonTheme
                                               .backgroundColor,
                                         ),
                                         child: Padding(
@@ -111,12 +110,10 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
                                           child: Text(
                                             (_sliderValue * 100)
                                                 .toStringAsFixed(0),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall!
+                                            style: theme.textTheme.bodySmall!
                                                 .copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
                                       )
@@ -138,52 +135,58 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
                 physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  SizedBox(
+                children: [
+                  const SizedBox(
                     width: 20,
                   ),
                   ChipWidget(
-                    label: Icon(
-                      CupertinoIcons.brightness,
+                    onTap: (){},
+                    widget: const Icon(CupertinoIcons.brightness),
+                    horizontalPadding: 8,
+                  ),
+                  const SizedBox(
+                    width: 18,
+                  ),
+                  ChipWidget(
+                    onTap: (){},
+                    widget: const Icon(
+                      Icons.contrast,
                     ),
                     horizontalPadding: 8,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   ChipWidget(
-                    label: Icon(Icons.water_drop_outlined),
+                    onTap: (){},
+                    widget: const Icon(Icons.water_drop_outlined),
                     horizontalPadding: 8,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   ChipWidget(
-                    label: Icon(Icons.contrast),
+                    onTap: (){},
+                    widget: const Icon(Icons.brightness_4),
                     horizontalPadding: 8,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   ChipWidget(
-                    label: Icon(Icons.settings_brightness),
+                    onTap: (){},
+                    widget: const Icon(Icons.adjust),
                     horizontalPadding: 8,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   ChipWidget(
-                    label: Icon(Icons.settings),
+                    onTap: (){},
+                    widget: const Icon(Icons.settings),
                     horizontalPadding: 8,
                   ),
-                  SizedBox(
-                    width: 16,
-                  ),
-                  ChipWidget(
-                    label: Icon(CupertinoIcons.brightness),
-                    horizontalPadding: 8,
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                 ],

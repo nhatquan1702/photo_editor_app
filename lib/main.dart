@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:photo_editor_app/constant/main_module.dart';
 import 'package:photo_editor_app/constant/route/route.dart';
 import 'package:photo_editor_app/constant/strings.dart';
 import 'package:photo_editor_app/constant/theme/theme.dart';
 
 void main() {
+  MainModule.init();
   runApp(const MyApp());
 }
 

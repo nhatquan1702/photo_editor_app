@@ -3,20 +3,25 @@ import 'package:flutter/material.dart';
 class ChipWidget extends StatelessWidget {
   const ChipWidget({
     Key? key,
-    required this.label,
-    this.horizontalPadding = 0,
+    required this.onTap,
+    required this.widget,
+    required this.horizontalPadding,
   }) : super(key: key);
-  final Widget label;
+
+  final VoidCallback onTap;
+  final Widget widget;
   final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      padding: EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 8 + horizontalPadding,
+    return ElevatedButton(
+      onPressed: onTap,
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
       ),
-      label: label,
+      child: widget,
     );
   }
 }

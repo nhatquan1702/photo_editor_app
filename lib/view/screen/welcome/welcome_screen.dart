@@ -6,6 +6,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -23,8 +24,8 @@ class WelcomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Theme.of(context).backgroundColor,
-                      Theme.of(context).backgroundColor.withOpacity(0.5),
+                      theme.scaffoldBackgroundColor,
+                      theme.scaffoldBackgroundColor.withOpacity(0.5),
                       Colors.transparent,
                     ],
                     begin: Alignment.bottomCenter,
@@ -41,10 +42,10 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 Text(
                   "Chỉnh sửa ảnh miễn phí tốt nhất, kho hình ảnh miễn phí bản quyền được chia sẻ bởi những người sáng tạo.",
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: theme.textTheme.titleMedium,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 24),
                 SizedBox(
                   height: 56,
                   width: MediaQuery.of(context).size.width,
@@ -62,7 +63,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     child: Text(
                       "Khám phá ngay",
-                      style: Theme.of(context)
+                      style: theme
                           .textTheme
                           .titleMedium,
                     ),
