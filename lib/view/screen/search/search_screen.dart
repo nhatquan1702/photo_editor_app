@@ -5,10 +5,11 @@ import 'package:get_it/get_it.dart';
 import 'package:photo_editor_app/constant/enum/status.dart';
 import 'package:photo_editor_app/constant/strings.dart';
 import 'package:photo_editor_app/data/repository/search/search_repository.dart';
+import 'package:photo_editor_app/view/component/widget/photo_item_gridview.dart';
+import 'package:photo_editor_app/view/component/widget/photo_shimer_loading.dart';
 import 'package:photo_editor_app/view/component/widget/snackbar.dart';
 import 'package:photo_editor_app/view/screen/search/search_view_model/search_cubit.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shimmer/shimmer.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -49,25 +50,27 @@ class _SearchLayoutState extends State<SearchLayout> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           iconSize: 20,
           icon: Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Theme.of(context).textTheme.headlineLarge?.color,
+            Icons.arrow_back,
+            color: theme.textTheme.headlineLarge?.color,
           ),
         ),
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: theme.backgroundColor,
         title: TextField(
           controller: keywordController,
           decoration: InputDecoration(
             border: InputBorder.none,
-            hintText: "e.g : Winter",
-            hintStyle: Theme.of(context).textTheme.bodyMedium,
+            hintText: 'Nhập từ khoá',
+            hintStyle: theme.textTheme.bodyMedium,
           ),
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: theme.textTheme.bodyLarge,
           autofocus: initialKeyword != null ? false : true,
           textInputAction: TextInputAction.search,
           onChanged: context.read<SearchCubit>().onKeywordChange,
@@ -89,7 +92,7 @@ class _SearchLayoutState extends State<SearchLayout> {
                 },
                 icon: Icon(
                   Icons.close,
-                  color: Theme.of(context).textTheme.headlineLarge?.color,
+                  color: theme.textTheme.headlineLarge?.color,
                 ),
               );
             },
@@ -129,7 +132,9 @@ class _SearchLayoutState extends State<SearchLayout> {
             return const SizedBox();
           }
           if (state.photosStatus != Status.success && state.photos.isEmpty) {
-            return const PhotosLoading();
+            return const PhotosLoading(
+              isSearch: true,
+            );
           }
 
           return SmartRefresher(
@@ -144,7 +149,7 @@ class _SearchLayoutState extends State<SearchLayout> {
                     width: 32,
                     height: 32,
                     child: CircularProgressIndicator(
-                      color: Theme.of(context).primaryColor,
+                      color: theme.primaryColor,
                       strokeWidth: 2,
                     ),
                   ),
@@ -161,7 +166,7 @@ class _SearchLayoutState extends State<SearchLayout> {
                     width: 32,
                     height: 32,
                     child: CircularProgressIndicator(
-                      color: Theme.of(context).primaryColor,
+                      color: theme.primaryColor,
                       strokeWidth: 2,
                     ),
                   ),
@@ -186,7 +191,7 @@ class _SearchLayoutState extends State<SearchLayout> {
               ),
               childrenDelegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return GestureDetector(
+                  return PhotoItemGridview(
                     onTap: () {
                       Navigator.pushNamed(
                         context,
@@ -194,47 +199,8 @@ class _SearchLayoutState extends State<SearchLayout> {
                         arguments: state.photos[index],
                       );
                     },
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        Image(
-                          image: NetworkImage(
-                            state.photos[index].src.portrait,
-                          ),
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) {
-                            return Center(
-                              child: Icon(
-                                Icons.broken_image_rounded,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            );
-                          },
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Colors.black, Colors.transparent],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.center,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 16,
-                          right: 16,
-                          bottom: 16,
-                          child: Text(
-                            state.photos[index].photographer,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(color: Colors.white),
-                            maxLines: 2,
-                          ),
-                        ),
-                      ],
-                    ),
+                    photoUrl: state.photos[index].src.portrait,
+                    photographer: state.photos[index].photographer,
                   );
                 },
                 childCount: state.photos.length,
@@ -242,39 +208,6 @@ class _SearchLayoutState extends State<SearchLayout> {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class PhotosLoading extends StatelessWidget {
-  const PhotosLoading({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.custom(
-      padding: const EdgeInsets.all(16),
-      gridDelegate: SliverQuiltedGridDelegate(
-        crossAxisCount: 2,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
-        repeatPattern: QuiltedGridRepeatPattern.inverted,
-        pattern: const [
-          QuiltedGridTile(2, 1),
-          QuiltedGridTile(1, 1),
-        ],
-      ),
-      childrenDelegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.white,
-            child: Container(
-              color: Colors.white,
-            ),
-          );
-        },
-        childCount: 8,
       ),
     );
   }

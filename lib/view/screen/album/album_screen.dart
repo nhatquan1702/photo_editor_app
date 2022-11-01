@@ -181,7 +181,7 @@ class _AlbumScreenState extends State<AlbumLayout> {
                 ),
                 const SliverPadding(
                   padding: EdgeInsets.all(16),
-                  sliver: PhotosWidget(),
+                  sliver: PhotoWidget(),
                 ),
               ],
             ),
