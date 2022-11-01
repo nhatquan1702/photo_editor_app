@@ -227,6 +227,7 @@ class _DetailPhotoLayoutState extends State<DetailPhotoLayout> {
                               );
                             },
                             style: ElevatedButton.styleFrom(
+                              backgroundColor: theme.canvasColor,
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
@@ -237,7 +238,7 @@ class _DetailPhotoLayoutState extends State<DetailPhotoLayout> {
                               style: theme
                                   .textTheme
                                   .titleSmall
-                                  ?.copyWith(color: theme.canvasColor),
+                                  ?.copyWith(color: theme.backgroundColor),
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -248,6 +249,7 @@ class _DetailPhotoLayoutState extends State<DetailPhotoLayout> {
                                   .downloadPhoto(photo.src.original);
                             },
                             style: OutlinedButton.styleFrom(
+                              side: BorderSide(color: theme.canvasColor),
                               padding: const EdgeInsets.all(16),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),

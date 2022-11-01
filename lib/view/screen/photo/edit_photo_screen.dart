@@ -16,6 +16,7 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
     final theme = Theme.of(context);
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        backgroundColor: theme.backgroundColor,
         onDestinationSelected: (int index) {},
         selectedIndex: 1,
         destinations: const [

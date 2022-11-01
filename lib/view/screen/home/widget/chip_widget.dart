@@ -17,6 +17,8 @@ class ChipWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context).canvasColor.withOpacity(0.1),
+        elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
