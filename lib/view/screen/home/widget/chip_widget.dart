@@ -5,12 +5,10 @@ class ChipWidget extends StatelessWidget {
     Key? key,
     required this.onTap,
     required this.widget,
-    required this.horizontalPadding,
   }) : super(key: key);
 
   final VoidCallback onTap;
   final Widget widget;
-  final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {

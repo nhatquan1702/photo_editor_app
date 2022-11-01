@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_editor_app/view/screen/home/widget/chip_widget.dart';
+import 'package:photo_editor_app/data/model/network/response/photo_model/photo_model.dart';
+import 'package:photo_editor_app/view/component/widget/chip_widget_square.dart';
 
 class EditPhotoScreen extends StatefulWidget {
   const EditPhotoScreen({Key? key}) : super(key: key);
@@ -10,7 +11,15 @@ class EditPhotoScreen extends StatefulWidget {
 }
 
 class _EditPhotoScreenState extends State<EditPhotoScreen> {
+  late PhotoItemModel photo;
   double _sliderValue = 0.34;
+
+  @override
+  void didChangeDependencies() {
+    photo = ModalRoute.of(context)?.settings.arguments as PhotoItemModel;
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -60,18 +69,19 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(16.0),
               child: Stack(
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height * 0.55,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/a_1.jpeg'),
-                        )),
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(photo.src.portrait),
+                      ),
+                    ),
                   ),
                   Positioned.fill(
                     child: Column(
@@ -140,52 +150,50 @@ class _EditPhotoScreenState extends State<EditPhotoScreen> {
                   const SizedBox(
                     width: 20,
                   ),
-                  ChipWidget(
-                    onTap: (){},
-                    widget: const Icon(CupertinoIcons.brightness),
-                    horizontalPadding: 8,
+                  CustomSquareButton(
+                    onTap: () {},
+                    icon: CupertinoIcons.brightness,
+                    context: context,
                   ),
                   const SizedBox(
                     width: 18,
                   ),
-                  ChipWidget(
-                    onTap: (){},
-                    widget: const Icon(
-                      Icons.contrast,
-                    ),
-                    horizontalPadding: 8,
+                  CustomSquareButton(
+                    onTap: () {},
+                    icon: Icons.contrast,
+                    context: context,
                   ),
                   const SizedBox(
                     width: 16,
                   ),
-                  ChipWidget(
-                    onTap: (){},
-                    widget: const Icon(Icons.water_drop_outlined),
-                    horizontalPadding: 8,
+                  CustomSquareButton(
+                    onTap: () {},
+                    icon: Icons.water_drop_outlined,
+                    context: context,
                   ),
                   const SizedBox(
                     width: 16,
                   ),
-                  ChipWidget(
-                    onTap: (){},
-                    widget: const Icon(Icons.brightness_4),
-                    horizontalPadding: 8,
+                  CustomSquareButton(
+                    onTap: () {},
+                    icon: Icons.brightness_4,
+                    context: context,
                   ),
                   const SizedBox(
                     width: 16,
                   ),
-                  ChipWidget(
-                    onTap: (){},
-                    widget: const Icon(Icons.adjust),
-                    horizontalPadding: 8,
+                  CustomSquareButton(
+                    onTap: () {},
+                    icon: Icons.adjust,
+                    context: context,
                   ),
                   const SizedBox(
                     width: 16,
                   ),
-                  ChipWidget(
-                    onTap: (){},
-                    widget: const Icon(Icons.settings),
-                    horizontalPadding: 8,
+                  CustomSquareButton(
+                    onTap: () {},
+                    icon: Icons.settings,
+                    context: context,
                   ),
                   const SizedBox(
                     width: 20,

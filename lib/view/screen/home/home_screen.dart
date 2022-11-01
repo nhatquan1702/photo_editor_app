@@ -148,7 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Spacer(),
                     ChipWidget(
                       onTap: () {},
-                      horizontalPadding: 0,
                       widget: Text(
                         'Xem tất cả',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
@@ -217,7 +216,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           AppRouteName.album,
                         );
                       },
-                      horizontalPadding: 0,
                       widget: Text(
                         'Xem tất cả',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
