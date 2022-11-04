@@ -49,6 +49,7 @@ dependencies:
   permission_handler: ^10.2.0
   share_plus: ^6.2.0
   path_provider: ^2.0.11
+  image_gallery_saver: ^1.7.1
 
 dev_dependencies:
   flutter_test:

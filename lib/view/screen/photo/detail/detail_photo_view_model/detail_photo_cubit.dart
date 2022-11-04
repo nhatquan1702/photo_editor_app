@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_editor_app/constant/enum/status.dart';
@@ -42,37 +44,6 @@ class DetailPhotoCubit extends Cubit<DetailPhotoState> {
   }
 
   void downloadPhoto(String photoUrl) async {
-    if (state.downloadStatus == DownloadStatus.downloading) return;
-
-    final date = DateTime.now().millisecondsSinceEpoch;
-    final directory = await _getDirectory();
-
-    if (directory == null) return;
-
-    try {
-      final path = directory.path;
-      final file = File("$path/$date.jpeg");
-      emit(state.copyWith(downloadStatus: DownloadStatus.downloading));
-      final response = await dio.download(
-        photoUrl,
-        file.path,
-        deleteOnError: true,
-      );
-      if (response.statusCode == 200) {
-        emit(state.copyWith(
-          downloadStatus: DownloadStatus.success,
-        ));
-      }
-    } catch (e) {
-      emit(state.copyWith(downloadStatus: DownloadStatus.failed));
-    } finally {
-      emit(state.copyWith(downloadStatus: DownloadStatus.initial));
-    }
-  }
-
-  Future<Directory?> _getDirectory() async {
-    Directory? directory;
-
     if (Platform.isAndroid) {
       var storage = await Permission.storage.isGranted;
       if (!storage) {
@@ -85,35 +56,26 @@ class DetailPhotoCubit extends Cubit<DetailPhotoState> {
         var status = await Permission.manageExternalStorage.request();
         if (!status.isGranted) return null;
       }
-
-      directory = await getExternalStorageDirectory();
-
-      String newPath = "";
-      final paths = directory?.path.split("/");
-      for (var i = 1; i < (paths?.length ?? 0); i++) {
-        String path = paths?[i] ?? "";
-        if (path == "Android") break;
-
-        newPath += "/$path";
-      }
-
-      newPath += "/Pictures/Pexel";
-
-      directory = Directory(newPath);
-    } else {
-      var photos = await Permission.photos.isGranted;
-      if (!photos) {
-        var status = await Permission.photos.request();
-        if (!status.isGranted) return null;
-      }
-
-      directory = await getApplicationDocumentsDirectory();
     }
 
-    if (!await directory.exists()) {
-      directory.create(recursive: true);
+    if (state.downloadStatus == DownloadStatus.downloading) return;
+    try {
+      emit(state.copyWith(downloadStatus: DownloadStatus.downloading));
+      var response = await Dio().get(
+        photoUrl,
+        options: Options(responseType: ResponseType.bytes),
+      );
+      if (response.statusCode == 200) {
+        await ImageGallerySaver.saveImage(
+          Uint8List.fromList(response.data),
+          quality: 100,
+        );
+        emit(state.copyWith(downloadStatus: DownloadStatus.success));
+      }
+    } catch (e) {
+      emit(state.copyWith(downloadStatus: DownloadStatus.failed));
+    } finally {
+      emit(state.copyWith(downloadStatus: DownloadStatus.initial));
     }
-
-    return directory;
   }
 }
