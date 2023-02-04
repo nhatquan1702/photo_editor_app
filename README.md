@@ -1,7 +1,7 @@
 # Photo Editor App - Flutter UI Design
 
 ## I. Introduction
-Flutter UI design Photo Editor App (BLoC + Json API)
+Flutter UI design Photo Editor App for Android and iOS (BLoC + Json API)
 
 ## II. Directory Structure
 ```
